@@ -1,0 +1,18 @@
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
+app.use(express.json());
+
+const userController = require('./controllers/userController');
+const thoughtController = require('./controllers/thoughtController');
+const reactionController = require('./controllers/reactionController');
+const friendshipController = require('./controllers/friendshipController');
+
+// Define the routes
+app.get('/users', userController.getUsers);
+app.post('/users', userController.createUser);
+app.put('/users/:id', userController.updateUser);
+app.delete('/users/:id', userController.deleteUser);
+
+// Define more routes for thoughts, reactions, and friendships
